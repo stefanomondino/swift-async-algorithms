@@ -11,12 +11,14 @@
 
 import DequeModule
 
+@available(AsyncAlgorithms 1.0, *)
 extension AsyncSequence where Self: Sendable, Element: Sendable {
   public func broadcast() -> AsyncBroadcastSequence<Self> {
     AsyncBroadcastSequence(self)
   }
 }
 
+@available(AsyncAlgorithms 1.0, *)
 public struct AsyncBroadcastSequence<Base: AsyncSequence>: Sendable where Base: Sendable, Base.Element: Sendable {
   struct State : Sendable {
     enum Terminal {
@@ -185,7 +187,7 @@ public struct AsyncBroadcastSequence<Base: AsyncSequence>: Sendable where Base: 
   }
 }
 
-
+@available(AsyncAlgorithms 1.0, *)
 extension AsyncBroadcastSequence: AsyncSequence {
   public typealias Element = Base.Element
   
